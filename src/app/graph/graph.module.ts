@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChartsModule } from 'ng2-charts';
 import { GraphComponent } from './graph.component';
 
 const routes: Routes = [
@@ -14,7 +14,8 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    ChartsModule
   ]
 })
 export class GraphModule { }

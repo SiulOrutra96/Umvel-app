@@ -1,1 +1,11 @@
-<p>graph works!</p>
+<div class="header">
+    <h1>Gráfica de ventas</h1>
+</div>
+
+<div>
+    <div>
+        <div style="display: block;">
+            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [colors]="lineChartColors" [chartType]="lineChartType"></canvas>
+        </div>
+    </div>
+</div>

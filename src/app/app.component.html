@@ -1,14 +1,14 @@
 <mat-toolbar color="primary">
     <span>Umvel App</span>
     <span class="spacer"></span>
-    <a mat-button routerLink="/login">
+    <button *ngIf="isAuthenticated" mat-button (click)="logout()">
         Logout
         <mat-icon>logout</mat-icon>
-    </a>
+    </button>
 </mat-toolbar>
 
 <mat-sidenav-container class="full">
-    <mat-sidenav mode="side" opened>
+    <mat-sidenav *ngIf="isAuthenticated" mode="side" opened>
         <mat-nav-list>
             <a mat-list-item routerLink="/users">
                 <span>Usuarios</span>

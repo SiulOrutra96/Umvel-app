@@ -1,31 +1,29 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth'
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(public auth: AngularFireAuth) { }
+  constructor(public auth: AngularFireAuth, private router: Router) { }
 
   login(email: string, password: string) {
-    this.auth.signInWithEmailAndPassword(email, password)
-      .then(res => {
-        console.log('RES: ', res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    return this.auth.signInWithEmailAndPassword(email, password);
   }
 
   signup(email: string, password: string) {
-    this.auth.createUserWithEmailAndPassword(email, password)
-      .catch(err => {
-        console.log(err);
-      });
+    return this.auth.createUserWithEmailAndPassword(email, password);
   }
 
   logout() {
-    this.auth.signOut();
+    this.auth.signOut().then(() => {
+      this.router.navigateByUrl('/');
+    });
+  }
+
+  currentUser() {
+    return this.auth.user;
   }
 }

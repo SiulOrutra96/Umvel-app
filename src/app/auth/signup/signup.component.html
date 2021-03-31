@@ -1,0 +1,29 @@
+<div class="padding-20 text-center">
+    <form [formGroup]="signupForm">
+        <p>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="emailCtrl" placeholder="email">
+                <mat-error *ngIf="signupForm.get('emailCtrl').hasError('email') && !signupForm.get('emailCtrl').hasError('required')">
+                    Ingrese un email válido
+                </mat-error>
+                <mat-error *ngIf="signupForm.get('emailCtrl').hasError('required')">
+                    El email es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="passwordCtrl" placeholder="email">
+                <mat-error *ngIf="signupForm.get('passwordCtrl').hasError('minlength') && !signupForm.get('passwordCtrl').hasError('required')">
+                    La contraseña debe tener al menos <strong>6 caracteres</strong>
+                </mat-error>
+                <mat-error *ngIf="signupForm.get('passwordCtrl').hasError('required')">
+                    La contraseña es <strong>requerida</strong>
+                </mat-error>
+            </mat-form-field>
+        </p>
+        <button mat-raised-button color="primary" [disabled]="signupForm.invalid" (click)="signup()">Registrarse</button>
+    </form>
+</div>

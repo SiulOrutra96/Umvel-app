@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+import { AngularFireModule } from '@angular/fire';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -10,10 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
-
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
+  { path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
   { path: 'graph', loadChildren: () => import('./graph/graph.module').then(m => m.GraphModule) }
 ]
@@ -26,6 +26,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     HttpClientModule,
     MatToolbarModule,
     MatSidenavModule,

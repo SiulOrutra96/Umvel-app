@@ -3,7 +3,7 @@
 </div>
 
 <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+    <table *ngIf="!isLoading" mat-table [dataSource]="dataSource">
         <!-- Id -->
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -43,5 +43,12 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <!-- Loading spinner -->
+    <div *ngIf="isLoading" class="text-center">
+        <mat-spinner></mat-spinner>
+    </div>
+    <!-- end: Loading spinner -->
+
     <mat-paginator [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>

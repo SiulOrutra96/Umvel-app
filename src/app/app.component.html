@@ -1,3 +1,4 @@
+<!-- Header -->
 <mat-toolbar color="primary">
     <span>Umvel App</span>
     <span class="spacer"></span>
@@ -6,7 +7,9 @@
         <mat-icon>logout</mat-icon>
     </button>
 </mat-toolbar>
+<!-- end: Header -->
 
+<!-- Sidenav -->
 <mat-sidenav-container class="full">
     <mat-sidenav *ngIf="isAuthenticated" mode="side" opened>
         <mat-nav-list>
@@ -26,3 +29,4 @@
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
+<!-- end: Sidenav -->

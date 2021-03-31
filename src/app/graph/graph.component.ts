@@ -13,6 +13,7 @@ export class GraphComponent implements OnInit {
   lineChartData: ChartDataSets[] = [];
   lineChartLabels: Label[] = [];
 
+  // Sets the color for the graph
   lineChartColors: Color[] = [
     {
       backgroundColor: 'rgba(48,175,12,0.3)',
@@ -31,8 +32,12 @@ export class GraphComponent implements OnInit {
   constructor(private graphService: GraphService) { }
 
   ngOnInit(): void {
+    // Gets the table data
     this.graphService.fetchData().subscribe(res => {
+      // Gets only the car_make labels
       this.lineChartLabels = res.map(sale => sale.car_make);
+
+      // Gets only the sales quantity
       let data = res.map(sale => sale.quantity);
       this.lineChartData = [{ data, label: 'Ventas' }];
     });

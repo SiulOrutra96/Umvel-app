@@ -13,18 +13,22 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'gender', 'image'];
   dataSource = new MatTableDataSource<User>([]);
+  isLoading: boolean = true;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
+    // Gets the table data
     this.usersService.fetchUsers().subscribe(res => {
       this.dataSource.data = res;
+      this.isLoading = false;
     });
   }
 
   ngAfterViewInit() {
+    // Sets the paginator
     this.dataSource.paginator = this.paginator;
   }
 }

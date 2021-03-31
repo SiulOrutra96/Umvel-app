@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    // Cheks if the user logs in or out
     this.authService.currentUser().subscribe(user => {
       this.isAuthenticated = user != null;
     });

@@ -29,9 +29,6 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.get('emailCtrl').value, this.loginForm.get('passwordCtrl').value)
         .then(res => {
           this.router.navigateByUrl('/users');
-        })
-        .catch(err => {
-          console.log(err);
         });
     }
   }

@@ -10,6 +10,7 @@ import { GraphService } from './graph.service';
 })
 export class GraphComponent implements OnInit {
 
+  isLoading: boolean = true;
   lineChartData: ChartDataSets[] = [];
   lineChartLabels: Label[] = [];
 
@@ -27,8 +28,6 @@ export class GraphComponent implements OnInit {
 
   lineChartType: ChartType = 'line';
 
-  @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
-
   constructor(private graphService: GraphService) { }
 
   ngOnInit(): void {
@@ -40,6 +39,7 @@ export class GraphComponent implements OnInit {
       // Gets only the sales quantity
       let data = res.map(sale => sale.quantity);
       this.lineChartData = [{ data, label: 'Ventas' }];
+      this.isLoading = false;
     });
   }
 }
